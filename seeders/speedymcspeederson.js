@@ -2,34 +2,34 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('statuses', [
+    return queryInterface.bulkInsert('priorities', [
     {
-      type: 'Queue',
+      type: 'Low',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      type: 'Progress',
+      type: 'Medium',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      type: 'Done',
+      type: 'High',
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
 },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('statuses', [
+    return queryInterface.bulkDelete('priorities', [
     {
-      type: 'Queue',
+      type: 'Low',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      type: 'Progress',
+      type: 'Medium',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      type: 'Done',
+      type: 'High',
       createdAt: new Date(),
       updatedAt: new Date()
     }])

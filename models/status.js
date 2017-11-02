@@ -1,16 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
 
-  const status = sequelize.define("status", {
+  const statuses = sequelize.define("statuses", {
     type: { type: DataTypes.STRING, allowNull: false }
   });
 
-  status.associate = function(models) {
-    status.hasMany(models.cards, {
+  statuses.associate = function(models) {
+    statuses.hasMany(models.cards, {
       foreignKey: {
-        name: 'status_',
+        name: 'statuses_',
         allowNull: false
       }
     })
   }
-  return status;
+  return statuses;
 };
