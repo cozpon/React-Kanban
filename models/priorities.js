@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
-  const priority = sequelize.define("priority", {
+  const priorities = sequelize.define("priorities", {
     type: DataTypes.STRING
   });
 
-priority.associate = function(models) {
-    priority.hasMany(models.cards, {
+priorities.associate = function(models) {
+    priorities.hasMany(models.cards, {
       foreignKey: {
         name: 'priorities_',
         allowNull: false
@@ -12,5 +12,5 @@ priority.associate = function(models) {
     })
   }
 
-  return priority;
+  return priorities;
 };
