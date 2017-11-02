@@ -15,19 +15,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
+        hello world
       </div>
     );
   }
 }
-
 
 // const mapStateToProps = (state) => { // returns an object onto this.props
 //   return {
 //     //books: state.bookList // makes it this.props.bookies
 //   }
 // }
-
 
 // const mapDispatchToProps = (dispatch) => {
 //     return {
