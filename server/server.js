@@ -8,6 +8,19 @@ const PORT = process.env.PORT || 4567;
 const Users = db.users;
 const Cards = db.cards;
 
+
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
+
+
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ "extended" : true }));
 
@@ -27,7 +40,6 @@ app.get('/api/users', (req, res) => {
   })
 })
 
-
 app.post('/api/cards', (req, res) => {
   const data = req.body;
   return Cards.create({
@@ -41,8 +53,6 @@ app.post('/api/cards', (req, res) => {
     res.json(data);
   })
 })
-
-
 
 app.get('/api/cards', (req, res) => {
   return Cards.findAll()
