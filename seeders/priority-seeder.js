@@ -4,15 +4,19 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('priorities', [
     {
-      type: 'Low',
+      kind: 'Low',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      type: 'Medium',
+      kind: 'Medium',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      type: 'High',
+      kind: 'High',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      kind: 'Blocker',
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
@@ -21,15 +25,19 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('priorities', [
     {
-      type: 'Low',
+      kind: 'Low',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      type: 'Medium',
+      kind: 'Medium',
       createdAt: new Date(),
       updatedAt: new Date()
     },{
-      type: 'High',
+      kind: 'High',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },{
+      kind: 'Blocker',
       createdAt: new Date(),
       updatedAt: new Date()
     }])
