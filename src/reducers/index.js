@@ -1,11 +1,4 @@
-import { GET_CARDS } from '../actions/cards';
-
-// // const { combineReducers } = Redux;
-// // const TodoApp = combineReducers({
-// //   todos: todos.
-// // })
-
-
+import { GET_CARDS, CREATE_CARD } from '../actions/cards';
 
 const initialState = {  // our data is coming in as an array,
   cards: []
@@ -16,8 +9,13 @@ const reducers = (state = initialState, action) => {
   console.log("REDUCERS: ", action);
   switch (action.type){
     case GET_CARDS:
-      console.log(action.cards, "actioncards");
-      return Object.assign({}, state, {cards : [...action.cards] })
+      return Object.assign({}, state, {
+        cards : [...action.cards]
+      })
+    case CREATE_CARD:
+      return Object.assign({}, state, {
+        cards : [...state, action.card]
+      })
     default:
       return state // always have a default return state if action.type isn't recognized
   }

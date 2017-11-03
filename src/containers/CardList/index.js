@@ -1,13 +1,13 @@
 // making a dummy component (functional component)
 import React from 'react';
-import Carditem from'../../components/Carditem';
+import CardItem from'../../components/CardItem';
 
 const CardList = ({cards}) => {
   return (
     <div className="card-list"> {
       cards.map((card) => {   //renders X amount of books
         return (
-          <Carditem title={card.title} statusId={card.statusId}/>
+          <CardItem title={card.title} priorityId={card.priorityId} key={card.id}/>
         );
       })
     }

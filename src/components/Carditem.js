@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Carditem = ( { title } ) => {
+const CardItem = ( { title, priorityId } ) => {
   return (
-    <div className="Carditem">
-      <div>{ title }</div>
+    <div className="CardItem">
+      <div> { title } </div>
+      <div> Priority Level: { priorityId } </div><br/>
     </div>
   );
 }
 
-export default Carditem;
+export default CardItem;

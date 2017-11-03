@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCards } from '../../actions/cards';
-
+import NewCardForm from '../NewCardForm';
 import CardList from '../CardList';
 
 class App extends Component{
   constructor(){
     super();
-    this.state = {
-      cards: [] // initial state
-    }
   }
 
   componentDidMount(){
     this.props.getCards()
   }
 
-
   render() {
     console.log(this.props, "RENDER PROPS");
     return (
       <div className="App">
-      Welcome 2 hell!
-      <CardList cards={this.props.cards}/>
+        <NewCardForm/>
+        Welcome 2 hell!<br/><br/>
+
+        <CardList cards={this.props.cards}/>
 
       </div>
     );

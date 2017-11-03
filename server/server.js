@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 4567;
 
 const Users = db.users;
 const Cards = db.cards;
-
+const Priorities = db.priorities;
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -16,10 +16,6 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Credentials', true);
   next();
 });
-
-
-
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ "extended" : true }));
@@ -58,6 +54,13 @@ app.get('/api/cards', (req, res) => {
   return Cards.findAll()
   .then(cards => {
     res.json(cards);
+  })
+})
+
+app.get('/api/priorities', (req, res) => {
+  return Priorities.findAll()
+  .then(priorities => {
+    res.json(priorities);
   })
 })
 
