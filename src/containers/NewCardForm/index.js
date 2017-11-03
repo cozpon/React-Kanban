@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { addCard } from '../../actions/cards';
 
 class NewCardForm extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       titleInput: '',
       createdByInput: '',
@@ -30,6 +28,7 @@ class NewCardForm extends Component {
 
     this.props.addCard(newCard);
 
+
     this.setState({
       titleInput: '',
       createdByInput: '',
@@ -50,14 +49,13 @@ class NewCardForm extends Component {
     this.setState({
       priorityIdInput: evt.target.value
     });
-
   }
 
-  // componentDidMount()
+  componentDidMount(){
+   this.props.getPriorities
+  }
   // XHR request to get priorities table
   // iterates over table data to make option variables
-
-
 
   render() {
     return (
@@ -65,26 +63,24 @@ class NewCardForm extends Component {
         <div className="newCardHeader">
         <h2> New Card Form </h2>
         </div>
-       <form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+
           <input value={this.state.titleInput} type="text" placeholder="title" onChange={this.handleTitleInput.bind(this)}/>
-          <select name="priority">
 
-          </select>
-        <input type="submit" value="Submit Priority">
+          <input type="submit" value="Submit Priority">
 
-        </input>
+          </input>
 
         </form>
          <br/>
       </div>
-
-
     )
   }
 }
 
 
 const mapDispatchToProps = (dispatch) => {
+
   return {
     addCard: (card) => {
       dispatch(addCard(card))
@@ -92,10 +88,10 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
+
 const ConnectedNewCardForm = connect(
   null,
   mapDispatchToProps
-
 )(NewCardForm)
 
 export default ConnectedNewCardForm;
@@ -104,3 +100,16 @@ export default ConnectedNewCardForm;
             // <option value={this.state.priorityInput} onChange={this.handlePriorityInput.bind(this)}>Low</option>
             // <option value={this.state.priorityInput} onChange={this.handlePriorityInput.bind(this)}>Medium</option>
             // <option value={this.state.priorityInput} onChange={this.handlePriorityInput.bind(this)}>High</option>
+
+
+
+
+   // <select name="priority" onChange={this.handleChangeAssigned.bind(this)}>
+
+ //     this.props.priorities.map((priority) => {
+ //       return {
+ //         <option value={priority.id}> {priority.name} </option>
+
+ //   });
+ // }
+ // </select>

@@ -14,11 +14,10 @@ class App extends Component{
   }
 
   render() {
-    console.log(this.props, "RENDER PROPS");
     return (
       <div className="App">
         <NewCardForm/>
-        Welcome 2 hell!<br/><br/>
+        <h1>Welcome 2 hell!</h1><br/><br/>
 
         <CardList cards={this.props.cards}/>
 
@@ -28,16 +27,14 @@ class App extends Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, "STATE");
   return {
-    cards: state.cards
+    cards: state.cardsList.cards
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getCards: () => {
-      console.log("DISPATCH ACTION");
       dispatch(getCards());
     }
   }
