@@ -3,12 +3,16 @@ import React from 'react';
 import CardItem from'../../components/CardItem';
 
 const CardList = ({cards}) => {
-  console.log(cards);
   return (
     <div className="card-list"> {
       cards.map((card) => {   //renders X amount of books
         return (
-          <CardItem title={card.title} priorityId={card.priorityId} key={card.id}/>
+          <CardItem
+            title={card.title}
+            creator={card.Creator.username}
+            assigneduser={card.Dev.username}
+            priority={card.Priority.kind}
+            key={card.id}/>
         );
       })
     }

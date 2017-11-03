@@ -1,21 +1,17 @@
 import { GET_PRIORITIES } from '../actions/priorities';
 
-const initialState = {  // our data is coming in as an array,
-  priorities: []
-};
+const initialState = []
 
 const prioritiesList = (state = initialState, action) => {
-  console.log('REDUCERS: activated');
-  console.log("REDUCERS: ", action);
+  console.log(state, "stateinFunction");
   switch (action.type){
     case GET_PRIORITIES:
-      return Object.assign({}, state, {
-        priorities : [...action.priorities]
-      })
+    console.log(" Why isn't it Hitting Here? ")
+      return [...action.priorities]
     default:
       return state
   }
 }
 
-
+console.log(initialState, "initialState");
 export default prioritiesList;

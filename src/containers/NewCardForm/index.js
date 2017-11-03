@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCard } from '../../actions/cards';
+import { getPriorities } from '../../actions/priorities';
 
 class NewCardForm extends Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class NewCardForm extends Component {
 
     this.props.addCard(newCard);
 
-
     this.setState({
       titleInput: '',
       createdByInput: '',
@@ -45,13 +45,13 @@ class NewCardForm extends Component {
   }
 
   handlePriorityInput(evt) {
-     console.log(evt);
     this.setState({
       priorityIdInput: evt.target.value
     });
   }
 
   componentDidMount(){
+   console.log(this.props.getPriorities, "COMPONENT");
    this.props.getPriorities
   }
   // XHR request to get priorities table
@@ -83,6 +83,7 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     addCard: (card) => {
+      console.log(card);
       dispatch(addCard(card))
     }
   }
@@ -104,7 +105,7 @@ export default ConnectedNewCardForm;
 
 
 
-   // <select name="priority" onChange={this.handleChangeAssigned.bind(this)}>
+ //   <select name="priority" onChange={this.handleChangeAssigned.bind(this)}>
 
  //     this.props.priorities.map((priority) => {
  //       return {

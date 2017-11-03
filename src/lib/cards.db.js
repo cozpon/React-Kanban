@@ -12,7 +12,7 @@ export const getCardsXHR = () => new Promise((resolve, reject) => {
 export const addCardsXHR = (card) => new Promise((resolve, reject) => {
   let oReq = new XMLHttpRequest();
   oReq.addEventListener('load', function(){
-    resolve(JSON.parse(this.responsetext))
+    resolve(JSON.parse(this.responseText))
   });
   oReq.open('POST', 'http://localhost:4567/api/cards/');
   oReq.send();

@@ -1,13 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
 
-  const users = sequelize.define("users", {
+  const User = sequelize.define("User", {
     username: { type: DataTypes.STRING, allowNull: false, unique: true }
   }, {
     tableName: 'users'
   });
 
-  users.associate = function(models) {
-    users.hasMany(models.cards)
+  User.associate = function(models) {
+    User.hasMany(models.Card, { foreignKey: 'created_by', as: 'Cards' });
+    User.hasMany(models.Card, { foreignKey: 'assigned_to', as: 'Tasks' });
   }
-  return users;
+  return User;
 };
+

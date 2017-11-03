@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const db = require('../models');
 const PORT = process.env.PORT || 4567;
 
-const Users = db.users;
-const Cards = db.cards;
-const Priorities = db.priorities;
+const Users = db.User;
+const Cards = db.Card;
+const Priorities = db.Priority;
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -29,13 +29,6 @@ app.post('/api/users', (req, res) => {
   })
 })
 
-app.get('/api/users', (req, res) => {
-  return Users.findAll()
-  .then(users => {
-    res.json(users);
-  })
-})
-
 app.post('/api/cards', (req, res) => {
   const data = req.body;
   return Cards.create({
@@ -43,30 +36,50 @@ app.post('/api/cards', (req, res) => {
     created_by: data.created_by,
     priorityId: data.priorityId,
     statusId: data.statusId,
-    userId: data.userId
+    assigned_to: data.assigned_to
   })
   .then(data => {
     res.json(data);
   })
 })
 
-app.get('/api/cards', (req, res) => {
-  return Cards.findAll()
-  .then(cards => {
-    res.json(cards);
-  })
-})
-
 app.get('/api/priorities', (req, res) => {
   return Priorities.findAll()
   .then(priorities => {
-    res.json(priorities);
+    return res.json(priorities);
   })
 })
-
 
 app.listen(PORT, function() {
   db.sequelize.sync({ force: false });
   console.log("SWERVER's UP" + `${PORT}`)
 });
 
+
+//use different routing to get different results, /user/cards will give all cards associated with that single user
+
+app.get('/api/cards', (req, res) => {
+  return Cards.findAll({
+    include: [
+      { model: Users, as: 'Creator' },
+      { model: Users, as: 'Dev' },
+      { model: Priorities, as: 'Priority'}
+    ]
+  })
+  .then(cards => {
+    return res.json(cards)
+  })
+})
+
+
+app.get('/api/users', (req, res) => {
+  return Users.findAll({
+    include: [
+      { model: Cards, as: "Cards" },
+      { model: Cards, as: "Tasks" }
+    ]
+  })
+  .then(users => {
+      return res.json(users)
+    })
+})

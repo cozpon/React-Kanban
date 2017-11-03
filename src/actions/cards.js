@@ -1,7 +1,7 @@
 import { getCardsXHR, addCardsXHR } from '../lib/cards.db.js'
 
 export const GET_CARDS = 'GET_CARDS';
-export const CREATE_CARD = 'GET_CARDS';
+export const CREATE_CARD = 'CREATE_CARD';
 
 export const getCards = () => {
   return function(dispatch){
