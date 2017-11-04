@@ -12,6 +12,7 @@ const CardList = ({cards}) => {
             creator={card.Creator.username}
             assigneduser={card.Dev.username}
             priority={card.Priority.kind}
+            status={card.Status.type}
             key={card.id}/>
         );
       })

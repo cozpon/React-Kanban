@@ -1,4 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
+
   const Card = sequelize.define("Card", {
     title: { type: DataTypes.STRING, allowNull: false, unique: true },
     created_by: { type: DataTypes.INTEGER },

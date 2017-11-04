@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCards } from '../../actions/cards';
 import { getPriorities } from '../../actions/priorities';
+import { getUsers } from '../../actions/users';
 
 import NewCardForm from '../NewCardForm';
 import CardList from '../CardList';
 import PriorityList from '../PriorityList';
+import UserList from '../UserList';
 
 class App extends Component{
   constructor(){
@@ -16,6 +18,7 @@ class App extends Component{
   componentDidMount(){
     this.props.getCards()
     this.props.getPriorities()
+    this.props.getUsers()
   }
 
   render() {
@@ -23,7 +26,7 @@ class App extends Component{
       <div className="App">
         <NewCardForm/>
         <h1>Welcome 2 hell!</h1><br/><br/>
-        <PriorityList priorities={this.props.priorities}/>
+
         <CardList cards={this.props.cards}/>
 
       </div>
@@ -32,10 +35,11 @@ class App extends Component{
 }
 
 const mapStateToProps = (state) => {
-      console.log(state, 'STATE');
+      console.log(state.usersList, 'STATE');
   return {
     cards: state.cardsList.cards,
-    priorities: state.prioritiesList
+    priorities: state.prioritiesList,
+    users: state.usersList
   }
 }
 
@@ -46,6 +50,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getPriorities: () => {
       dispatch(getPriorities());
+    },
+    getUsers: () => {
+      dispatch(getUsers());
     }
   }
 }

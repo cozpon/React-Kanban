@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 4567;
 const Users = db.User;
 const Cards = db.Card;
 const Priorities = db.Priority;
+const Status = db.Status;
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -63,7 +64,8 @@ app.get('/api/cards', (req, res) => {
     include: [
       { model: Users, as: 'Creator' },
       { model: Users, as: 'Dev' },
-      { model: Priorities, as: 'Priority'}
+      { model: Priorities, as: 'Priority'},
+      { model: Status, as: 'Status'}
     ]
   })
   .then(cards => {
