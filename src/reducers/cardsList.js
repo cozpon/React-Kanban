@@ -12,7 +12,7 @@ const cardsList = (state = initialState, action) => {
       })
     case CREATE_CARD:
       return Object.assign({}, state, {
-        cards : [...state, action.card]
+        cards : [...state.cards, action.card]
       })
     default:
       return state // always have a default return state if action.type isn't recognized

@@ -40,9 +40,19 @@ app.post('/api/cards/', (req, res) => {
     statusId: data.statusId,
     assigned_to: data.assigned_to
   })
-  .then(data => {
-    console.log(data, "POST DATA");
-    res.json(data);
+  .then(card => {
+    return card.reload({
+      include: [
+        { model: Users, as: 'Creator' },
+        { model: Users, as: 'Dev' },
+        { model: Priorities, as: 'Priority'},
+        { model: Status, as: 'Status'}
+      ]  //includes
+    })
+    res.json(card);
+  })
+  .then(card => {
+    return res.json(card);
   })
 })
 
