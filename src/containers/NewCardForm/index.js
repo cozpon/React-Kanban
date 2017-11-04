@@ -79,9 +79,13 @@ handleUserInput(evt) {
       <div className="new-card-form">
         <form onSubmit={this.handleSubmit}>
           <input value={this.state.title} type="text" placeholder="card title" onChange={this.handleTitleInput}/>
-
-          <UserList users={this.props.users} onUserChange={this.handleUserInput}/>
+          <br/>
+          Created By: <UserList users={this.props.users} onUserChange={this.handleUserInput}/>
+          <br/>
+          Priority Level:
           <PriorityList priorities={this.props.priorities} onPriorityChange={this.handlePriorityInput}/>
+          <br/>
+          Assigned To:
           <CreatorList users={this.props.users} onCreatorChange={this.handleCreatorInput}/>
 
           <input type="submit" value="submit card"/>

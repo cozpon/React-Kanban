@@ -13,16 +13,16 @@ body {
 
 .card-list {
   background: #f6efe5;
-  width: 40%;
+  width: 20%;
   border: 4px solid black;
-  margin: .5em auto;
+  margin: .5em .5em .5em 5em;
   float: left;
 }
 
 .CardItem {
-  font-size: 12px;
+  font-size: 14px;
   background-color: #091f2d;
-  width: 25%;
+  width: 50%;
   padding: 20%;
   border: 4px solid black;
   margin: .5em auto;
@@ -33,5 +33,6 @@ body {
   border: 5px #f15b32;
   background-color: #091f2d;
   color: #ffffff;
+  text-align: left;
 }
 

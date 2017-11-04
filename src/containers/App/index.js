@@ -25,9 +25,7 @@ class App extends Component{
       <div className="App">
         <NewCardForm/>
         <h1>Welcome 2 hell!</h1><br/><br/>
-
         <CardList cards={this.props.cards}/>
-
       </div>
     );
   }
