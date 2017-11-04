@@ -14,7 +14,6 @@ class App extends Component{
     super();
   }
 
-
   componentDidMount(){
     this.props.getCards()
     this.props.getPriorities()

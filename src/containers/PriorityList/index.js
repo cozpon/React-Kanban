@@ -3,13 +3,16 @@ import React from 'react';
 import PriorityItem from'../../components/PriorityItem';
 
 
-const PriorityList = ({priorities}) => {
+const PriorityList = ({priorities, onPriorityChange}) => {
   return (
      <div className="priority-list">
-     <select>
+     <select onChange= {onPriorityChange} >
     {
-      priorities.map((priority, idx) => {
-        return ( <PriorityItem kind={priority.kind} key={idx}/> )
+      priorities.map((priority) => {
+        return ( <PriorityItem
+         kind={priority.kind}
+         id={priority.id}
+         key={priority.id}/> )
       })
     }
     </select>

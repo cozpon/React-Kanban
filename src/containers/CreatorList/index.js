@@ -2,10 +2,10 @@
 import React from 'react';
 import UserItem from'../../components/UserItem';
 
-const UserList = ({users, onUserChange}) => {
+const CreatorList = ({users, onCreatorChange}) => {
   return (
      <div className="user-list">
-     <select onChange={onUserChange}>
+     <select onChange={onCreatorChange}>
     {
       users.map((user) => {
         return ( <UserItem
@@ -20,4 +20,4 @@ const UserList = ({users, onUserChange}) => {
 }
 
 
-export default UserList;
+export default CreatorList;

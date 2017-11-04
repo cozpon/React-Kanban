@@ -5,7 +5,8 @@ import CardItem from'../../components/CardItem';
 const CardList = ({cards}) => {
   return (
     <div className="card-list"> {
-      cards.map((card) => {   //renders X amount of books
+      cards.map((card) => {
+      console.log(card, "CARD LIST");  //renders X amount of books
         return (
           <CardItem
             title={card.title}
