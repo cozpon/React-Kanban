@@ -35,7 +35,6 @@ class App extends Component{
 }
 
 const mapStateToProps = (state) => {
-      console.log(state.usersList, 'STATE');
   return {
     cards: state.cardsList.cards,
     priorities: state.prioritiesList,

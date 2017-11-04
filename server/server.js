@@ -30,7 +30,8 @@ app.post('/api/users', (req, res) => {
   })
 })
 
-app.post('/api/cards', (req, res) => {
+app.post('/api/cards/', (req, res) => {
+  console.log(req.body);
   const data = req.body;
   return Cards.create({
     title: data.title,

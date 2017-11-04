@@ -6,8 +6,6 @@ import PriorityItem from'../../components/PriorityItem';
 const PriorityList = ({priorities}) => {
   return (
      <div className="priority-list">
-     <form method="POST" action="index.php">
-
      <select>
     {
       priorities.map((priority, idx) => {
@@ -15,8 +13,6 @@ const PriorityList = ({priorities}) => {
       })
     }
     </select>
-
-    </form>
     </div>
     )
 }

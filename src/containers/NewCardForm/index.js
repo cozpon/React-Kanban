@@ -26,8 +26,8 @@ class NewCardForm extends Component {
     let newCard = {
       titleInput: this.state.titleInput,
       createdByInput: this.state.createdByInput || 1,
-      priorityIdInput: this.state.priorityIdInput || 3,
-      statusIdInput: this.state.statusIdInput || 2,
+      priorityIdInput: this.state.priorityIdInput || 1,
+      statusIdInput: this.state.statusIdInput || 1,
       userIdInput: this.state.userIdInput || 1
     }
      console.log(newCard, "New Card")
@@ -44,6 +44,7 @@ class NewCardForm extends Component {
   }
 
   handleUserInput(evt) {
+    console.log(evt.target.value)
     this.setState({
       userIdInput: evt.target.value
     })
@@ -65,24 +66,22 @@ class NewCardForm extends Component {
    this.props.getPriorities(),
    this.props.getUsers()
   }
-  // XHR request to get priorities table
-  // iterates over table data to make option variables
-
   render() {
+    console.log(this.props.users);
     return (
       <div className="new-card-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" placeholder="title" value={this.state.titleInput} onChange={this.handleTitleInput.bind(this)}/>
 
-          <select name="assignedTo">
-            <option value={this.state.userIdInput} onChange={this.handleSubmit.bind(this)}>blah</option>
-          </select>
+            <select name="assignedTo">
+              <option value={this.props.users} onChange={this.handleSubmit.bind(this)}>{this.props.users.username}</option>
+            </select>
 
-          <UserList users={this.props.users} onChange={this.handleUserInput.bind(this)}/>
+          <UserList users={this.props.users} value={this.props.id} onChange={this.handleUserInput.bind(this)}/>
 
-          <PriorityList priorities={this.props.priorities}/>
+          <PriorityList priorities={this.props.priorities} onChange={this.handlePriorityInput.bind(this)}/>
 
-          <button type='submit'>Submit</button>
+          <button type='submit' onChange={this.handleSubmit.bind(this)}>Submit</button>
         </form>
       </div>
     );
