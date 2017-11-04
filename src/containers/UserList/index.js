@@ -8,7 +8,7 @@ const UserList = ({users}) => {
      <select>
     {
       users.map((user, idx) => {
-        return ( <UserItem username={user.username} key={idx}/> )
+        return ( <UserItem username={user.username} key={idx} /> )
       })
     }
     </select>

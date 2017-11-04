@@ -25,10 +25,10 @@ class NewCardForm extends Component {
 
     let newCard = {
       titleInput: this.state.titleInput,
-      createdByInput: this.state.createdByInput,
-      priorityIdInput: this.state.priorityIdInput,
-      statusIdInput: this.state.statusIdInput,
-      userIdInput: this.state.userIdInput
+      createdByInput: this.state.createdByInput || 1,
+      priorityIdInput: this.state.priorityIdInput || 3,
+      statusIdInput: this.state.statusIdInput || 2,
+      userIdInput: this.state.userIdInput || 1
     }
      console.log(newCard, "New Card")
 
@@ -40,6 +40,12 @@ class NewCardForm extends Component {
       priorityIdInput: '',
       statusIdInput: '',
       userIdInput: ''
+    })
+  }
+
+  handleUserInput(evt) {
+    this.setState({
+      userIdInput: evt.target.value
     })
   }
 
@@ -67,11 +73,15 @@ class NewCardForm extends Component {
       <div className="new-card-form">
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input type="text" placeholder="title" value={this.state.titleInput} onChange={this.handleTitleInput.bind(this)}/>
+
           <select name="assignedTo">
             <option value={this.state.userIdInput} onChange={this.handleSubmit.bind(this)}>blah</option>
           </select>
-          <UserList users={this.props.users}/>
+
+          <UserList users={this.props.users} onChange={this.handleUserInput.bind(this)}/>
+
           <PriorityList priorities={this.props.priorities}/>
+
           <button type='submit'>Submit</button>
         </form>
       </div>
@@ -108,7 +118,6 @@ render(){
 
 
 const mapStateToProps = (state) => {
-  console.log(state, "STATE MAP STATE TO PROPS");
   return {
     priorities: state.prioritiesList,
     users: state.usersList
@@ -116,7 +125,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    console.log(dispatch, 'STATE');
+
   return {
     addCard: (card) => {
       dispatch(addCard(card))
