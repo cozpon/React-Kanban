@@ -31,7 +31,6 @@ app.post('/api/users', (req, res) => {
 })
 
 app.post('/api/cards/', (req, res) => {
-  console.log(req.body, "POST");
   const data = req.body;
   return Cards.create({
     title: data.title,
@@ -47,7 +46,7 @@ app.post('/api/cards/', (req, res) => {
         { model: Users, as: 'Dev' },
         { model: Priorities, as: 'Priority'},
         { model: Status, as: 'Status'}
-      ]  //includes
+      ]
     })
     res.json(card);
   })
@@ -81,7 +80,6 @@ app.get('/api/cards', (req, res) => {
     ]
   })
   .then(cards => {
-    console.log(cards, "DB CARDS");
     return res.json(cards)
   })
 })

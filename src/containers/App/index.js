@@ -6,8 +6,7 @@ import { getUsers } from '../../actions/users';
 
 import NewCardForm from '../NewCardForm';
 import CardList from '../CardList';
-import PriorityList from '../PriorityList';
-import UserList from '../UserList';
+
 
 class App extends Component{
   constructor(){
@@ -25,7 +24,7 @@ class App extends Component{
       <div className="App">
         <NewCardForm/>
         <h1>Welcome 2 hell!</h1><br/><br/>
-        <CardList cards={this.props.cards}/>
+        <CardList cards={this.props.cards} columnStatus='Queue'/>
       </div>
     );
   }

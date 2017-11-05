@@ -18,6 +18,19 @@ body {
   margin: .5em .5em .5em 5em;
   float: left;
 }
+.creator-list {
+  margin: 1em 0em 0em 10em;
+}
+.priority-list {
+  margin: 1em 0em 0em 7.4em;
+}
+.user-list{
+  margin: 1em 0em 2em 6.5em;
+}
+
+.input-form{
+  margin-left: 10px;
+}
 
 .CardItem {
   font-size: 14px;
@@ -33,6 +46,6 @@ body {
   border: 5px #f15b32;
   background-color: #091f2d;
   color: #ffffff;
-  text-align: left;
+  /*text-align: left;*/
 }
 

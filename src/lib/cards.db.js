@@ -6,7 +6,6 @@ export const addCardsXHR = (card) => new Promise((resolve, reject) => {
     if(oReq.readyState === XMLHttpRequest.DONE && oReq.status === 200) {
       let response = JSON.parse(this.response);
       resolve(response);
-      console.log(response, "RESPONSE LIB");
     }
   };
   oReq.open('POST', 'http://localhost:4567/api/cards/');

@@ -14,6 +14,12 @@ const cardsList = (state = initialState, action) => {
       return Object.assign({}, state, {
         cards : [...state.cards, action.card]
       })
+    // case TOGGLE_TODO:
+    //   if (state.id !== action.id) {
+    //     return Object.assign({}, state, {
+    //       cards : [...action.cards]
+    //     })
+    //   }
     default:
       return state // always have a default return state if action.type isn't recognized
   }

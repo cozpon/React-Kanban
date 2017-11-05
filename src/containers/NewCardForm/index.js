@@ -4,9 +4,7 @@ import { addCard } from '../../actions/cards';
 import { getPriorities } from '../../actions/priorities';
 import { getUsers } from '../../actions/users';
 
-import PriorityList from '../PriorityList';
-import UserList from '../UserList';
-import CreatorList from '../CreatorList';
+import Select from '../../components/Select';
 
 class NewCardForm extends Component {
   constructor(props) {
@@ -78,16 +76,27 @@ handleUserInput(evt) {
     return (
       <div className="new-card-form">
         <form onSubmit={this.handleSubmit}>
-          <input value={this.state.title} type="text" placeholder="card title" onChange={this.handleTitleInput}/>
-          <br/>
-          Created By: <UserList users={this.props.users} onUserChange={this.handleUserInput}/>
-          <br/>
-          Priority Level:
-          <PriorityList priorities={this.props.priorities} onPriorityChange={this.handlePriorityInput}/>
-          <br/>
-          Assigned To:
-          <CreatorList users={this.props.users} onCreatorChange={this.handleCreatorInput}/>
+          <Select
+          list={this.props.users}
+          label="Task Master: "
+          type="username"
+          handler={this.handleCreatorInput.bind(this)}/>
 
+          <Select
+          list={this.props.priorities}
+          label="Priority Level:  "
+          type="kind"
+          handler={this.handlePriorityInput.bind(this)}/>
+
+          <Select
+          list={this.props.users}
+          label="Assigned To: "
+          type="username"
+          handler={this.handleUserInput.bind(this)}/>
+
+          <div className="input-form">
+            <input value={this.state.title} type="text" placeholder="card title" onChange={this.handleTitleInput}/>
+          </div>
           <input type="submit" value="submit card"/>
         </form>
       </div>
