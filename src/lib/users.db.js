@@ -1,3 +1,5 @@
+// getting USER data for the dropdown selector as well as the CARD information
+
 
 export const getUsersXHR = () => new Promise((resolve, reject) => {
     let oReq = new XMLHttpRequest();

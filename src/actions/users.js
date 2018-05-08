@@ -5,7 +5,7 @@ export const getUsers = () => {
     return getUsersXHR().then(users => {
       dispatch({
         type: GET_USERS,
-        users: users
+        users: users  // setting state of USERS to returned "users" after the XHR request completes
       })
     })
   }

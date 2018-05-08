@@ -16,7 +16,8 @@ class NewCardForm extends Component {
       priorityId: '',
       statusId: 1,
       assigned_to: ''
-    }
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleTitleInput = this.handleTitleInput.bind(this);
@@ -29,9 +30,9 @@ class NewCardForm extends Component {
     evt.preventDefault();
 
     let newCard = {
-      title: this.state.title,
-      created_by: this.state.created_by || 1,
-      priorityId: this.state.priorityId || 1,
+      title: this.state.title,  // when the client inserts/changes the title, it sets the state here
+      created_by: this.state.created_by || 1, // Sets an "or" case for if client doesn't change dropdown options
+      priorityId: this.state.priorityId || 1, // it will default to the defaulted drop-down option
       statusId: this.state.statusId,
       assigned_to: this.state.assigned_to || 1
     }
@@ -40,8 +41,8 @@ class NewCardForm extends Component {
     this.props.addCard(newCard);
 
     this.setState({
-      title: '',
-      created_by: '',
+      title: '',  // this will pass up to the newCard that will be submitted on the button press of "submit"
+      created_by: '', // it will be an integer which, through association on our DB, will return us a Username
       priorityId: '',
       statusId: 1,
       assigned_to: ''
@@ -49,15 +50,15 @@ class NewCardForm extends Component {
   }
 
   handleTitleInput(evt) {
-    this.setState({
+    this.setState({             // setting the state of the title to be the value input from below
       title: (evt.target.value)
     });
   }
 
   handleCreatorInput(evt) {
-    this.setState({
-      created_by: parseInt(evt.target.value)
-    })
+    this.setState({     // where the Created_By value is set to the State
+      created_by: parseInt(evt.target.value)  // parsed from a string into an integer which JSON wants
+    });
   }
 
   handlePriorityInput(evt) {
@@ -69,7 +70,7 @@ class NewCardForm extends Component {
 handleUserInput(evt) {
     this.setState({
       assigned_to: parseInt(evt.target.value)
-    })
+    });
   }
 
   render() {
@@ -77,7 +78,7 @@ handleUserInput(evt) {
       <div className="new-card-form">
         <form onSubmit={this.handleSubmit}>
           <Select
-          list={this.props.users}
+          list={this.props.users}     // here is the DUMMY COMPONENT in use
           label="Task Master: "
           type="username"
           handler={this.handleCreatorInput.bind(this)}/>
@@ -106,7 +107,7 @@ handleUserInput(evt) {
 
 const mapStateToProps = (state) => {
   return {
-    priorities: state.prioritiesList,
+    priorities: state.prioritiesList,     // setting state
     users: state.usersList,
     cards: state.cardsList
   }

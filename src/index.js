@@ -11,11 +11,11 @@ import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(
   reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), // middleware to use REDUX tools in CHROME
   applyMiddleware(thunk) //saying before you go to reducers, apply middleware.
 );
 
-ReactDOM.render(
+ReactDOM.render( // need to include Provider store, in order to create a STORE (kind of a front-end DB) which is from React-Redux
    <Provider store={store}>
     <App />
    </Provider>,
